@@ -1,283 +1,1705 @@
 [
-  {
-    "id": "5c65941a.a85b6c",
-    "type": "tab",
-    "label": "Flow 1",
-    "disabled": false,
-    "info": ""
-  },
-  {
-    "id": "87d3e42d.d7652",
-    "type": "ui_text_input",
-    "z": "5c65941a.a85b6c",
-    "name": "Login_ID",
-    "label": "Login ID",
-    "tooltip": "",
-    "group": "bdf902e4.0acb98",
-    "order": 3,
-    "width": 0,
-    "height": 0,
-    "passthru": false,
-    "mode": "text",
-    "delay": 300,
-    "topic": "topic",
-    "topicType": "msg",
-    "x": 320,
-    "y": 200,
-    "wires": [
-      [
-        "283bdd2a.1cebd2"
+   {
+      "id":"62d78cbd.968054",
+      "type":"tab",
+      "label":"Hospital Management",
+      "disabled":false,
+      "info":""
+   },
+   {
+      "id":"a4300ac5.15545",
+      "type":"mysql",
+      "z":"62d78cbd.968054",
+      "mydb":"a3798f0e.a203c",
+      "name":"",
+      "x":2220,
+      "y":1040,
+      "wires":[
+         [
+            "fc840e2d.6009f",
+            "e45ef3ab.3950e",
+            "2407fa3d.3c9666",
+            "f12d210c.123d08",
+            "3d3902b0.64af06",
+            "a4285fd9.77a228",
+            "54fe26d5.2aaae8"
+         ]
       ]
-    ]
-  },
-  {
-    "id": "17950083.45b57f",
-    "type": "ui_text_input",
-    "z": "5c65941a.a85b6c",
-    "name": "Pasword",
-    "label": "Pasword",
-    "tooltip": "",
-    "group": "bdf902e4.0acb98",
-    "order": 4,
-    "width": 0,
-    "height": 0,
-    "passthru": false,
-    "mode": "password",
-    "delay": 300,
-    "topic": "topic",
-    "topicType": "msg",
-    "x": 320,
-    "y": 260,
-    "wires": [
-      [
-        "5683a947.0fe65"
-      ]
-    ]
-  },
-  {
-    "id": "663aeb78.53585c",
-    "type": "ui_button",
-    "z": "5c65941a.a85b6c",
-    "name": "Login",
-    "group": "bdf902e4.0acb98",
-    "order": 6,
-    "width": 0,
-    "height": 0,
-    "passthru": false,
-    "label": "Login",
-    "tooltip": "",
-    "color": "",
-    "bgcolor": "",
-    "icon": "",
-    "payload": " ",
-    "payloadType": "str",
-    "topic": "topic",
-    "topicType": "msg",
-    "x": 130,
-    "y": 320,
-    "wires": [
-      [
-        "87d3e42d.d7652",
-        "17950083.45b57f",
-        "6d843f9f.36c598"
-      ]
-    ]
-  },
-  {
-    "id": "90114eda.5f4d98",
-    "type": "ui_ui_control",
-    "z": "5c65941a.a85b6c",
-    "name": "",
-    "events": "all",
-    "x": 1000,
-    "y": 300,
-    "wires": [
-      [
-        
-      ]
-    ]
-  },
-  {
-    "id": "70ae478b.cfda2",
-    "type": "function",
-    "z": "5c65941a.a85b6c",
-    "name": "",
-    "func": "var lid=global.get(\"LID\");\nvar pwd=global.get(\"PWD\");\nif(lid === \"David_0909\" && pwd == \"qwerty1234\")\n{\n    msg.payload = 1;\n}\nelse\n{\n    msg.payload = 0;\n}\nreturn msg;\n",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "x": 520,
-    "y": 320,
-    "wires": [
-      [
-        "6d9ffd5b.cfddf4"
-      ]
-    ]
-  },
-  {
-    "id": "5683a947.0fe65",
-    "type": "function",
-    "z": "5c65941a.a85b6c",
-    "name": "",
-    "func": "global.set(\"PWD\",msg.payload);",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "x": 540,
-    "y": 260,
-    "wires": [
-      [
-        
-      ]
-    ]
-  },
-  {
-    "id": "283bdd2a.1cebd2",
-    "type": "function",
-    "z": "5c65941a.a85b6c",
-    "name": "",
-    "func": "global.set(\"LID\",msg.payload);",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "x": 540,
-    "y": 200,
-    "wires": [
-      [
-        
-      ]
-    ]
-  },
-  {
-    "id": "6d843f9f.36c598",
-    "type": "delay",
-    "z": "5c65941a.a85b6c",
-    "name": "",
-    "pauseType": "delay",
-    "timeout": "1",
-    "timeoutUnits": "seconds",
-    "rate": "1",
-    "nbRateUnits": "1",
-    "rateUnits": "second",
-    "randomFirst": "1",
-    "randomLast": "5",
-    "randomUnits": "seconds",
-    "drop": false,
-    "x": 320,
-    "y": 320,
-    "wires": [
-      [
-        "70ae478b.cfda2"
-      ]
-    ]
-  },
-  {
-    "id": "6d9ffd5b.cfddf4",
-    "type": "switch",
-    "z": "5c65941a.a85b6c",
-    "name": "",
-    "property": "payload",
-    "propertyType": "msg",
-    "rules": [
-      {
-        "t": "eq",
-        "v": "1",
-        "vt": "num"
-      },
-      {
-        "t": "eq",
-        "v": "0",
-        "vt": "num"
-      }
-    ],
-    "checkall": "true",
-    "repair": false,
-    "outputs": 2,
-    "x": 690,
-    "y": 320,
-    "wires": [
-      [
-        "360faac7.d1f9ce"
+   },
+   {
+      "id":"c48df66f.4dda",
+      "type":"inject",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "props":[
+         {
+            "p":"payload"
+         }
       ],
-      [
-        "9466099f.03dff8"
+      "repeat":"1",
+      "crontab":"",
+      "once":true,
+      "onceDelay":0.1,
+      "topic":"",
+      "payload":"",
+      "payloadType":"date",
+      "x":230,
+      "y":360,
+      "wires":[
+         [
+            "57f00a62.b24e2c",
+            "2f4f312a.152d2e"
+         ]
       ]
-    ]
-  },
-  {
-    "id": "4f383da2.a4434c",
-    "type": "ui_text",
-    "z": "5c65941a.a85b6c",
-    "group": "bdf902e4.0acb98",
-    "order": 5,
-    "width": 0,
-    "height": 0,
-    "name": "Login Status",
-    "label": "Login Status",
-    "format": "{{msg.payload}}",
-    "layout": "row-spread",
-    "x": 1010,
-    "y": 360,
-    "wires": [
-      
-    ]
-  },
-  {
-    "id": "360faac7.d1f9ce",
-    "type": "function",
-    "z": "5c65941a.a85b6c",
-    "name": "",
-    "func": "msg.payload = \"Dashboard\"\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "x": 840,
-    "y": 300,
-    "wires": [
-      [
-        "90114eda.5f4d98"
+   },
+   {
+      "id":"e58e7f16.aecd9",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"msg.topic=\"SELECT * FROM Hospital_Management.Patient_Details where (`Patient_ID` = '\"+msg.payload+\"');\";\n//msg.payload=\"insert into tankcontrol(timestamp,reservetanklevel,supplytankflow,supplytanklevel,outletflow,valve1,pump,valve2,override,soiltimestamp,soildata) values(\"+'\"'+dt+'\"'+\",\"+l1+\",\"+f1+\",\"+l2+\",\"+f2+\",\"+v1+\",\"+p+\",\"+v2+\",\"+ov+\",\"+'\"'+ds+'\"'+\",\"+s+\");\";\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1980,
+      "y":1040,
+      "wires":[
+         [
+            "a4300ac5.15545"
+         ]
       ]
-    ]
-  },
-  {
-    "id": "9466099f.03dff8",
-    "type": "function",
-    "z": "5c65941a.a85b6c",
-    "name": "",
-    "func": "msg.payload = \"Failed\"\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "x": 840,
-    "y": 340,
-    "wires": [
-      [
-        "4f383da2.a4434c"
+   },
+   {
+      "id":"fc840e2d.6009f",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"msg.payload = msg.payload[0].Patient_ID\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":2540,
+      "y":840,
+      "wires":[
+         [
+            "10c6fea5.68af41"
+         ]
       ]
-    ]
-  },
-  {
-    "id": "bdf902e4.0acb98",
-    "type": "ui_group",
-    "name": "Login Page",
-    "tab": "11f4a990.0abade",
-    "order": 1,
-    "disp": true,
-    "width": "12",
-    "collapse": false
-  },
-  {
-    "id": "11f4a990.0abade",
-    "type": "ui_tab",
-    "name": "Hospital Management",
-    "icon": "dashboard",
-    "order": 4,
-    "disabled": false,
-    "hidden": false
-  }
+   },
+   {
+      "id":"10c6fea5.68af41",
+      "type":"ui_text",
+      "z":"62d78cbd.968054",
+      "group":"b883aca4.0b5ca8",
+      "order":1,
+      "width":5,
+      "height":1,
+      "name":"",
+      "label":"Patient_ID",
+      "format":"{{msg.payload}}",
+      "layout":"row-spread",
+      "x":2730,
+      "y":840,
+      "wires":[
+         
+      ]
+   },
+   {
+      "id":"2407fa3d.3c9666",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"msg.payload = msg.payload[0].Age\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":2540,
+      "y":960,
+      "wires":[
+         [
+            "29ad917a.7a12ae"
+         ]
+      ]
+   },
+   {
+      "id":"29ad917a.7a12ae",
+      "type":"ui_text",
+      "z":"62d78cbd.968054",
+      "group":"b883aca4.0b5ca8",
+      "order":3,
+      "width":5,
+      "height":1,
+      "name":"",
+      "label":"Age",
+      "format":"{{msg.payload}}",
+      "layout":"row-spread",
+      "x":2710,
+      "y":960,
+      "wires":[
+         
+      ]
+   },
+   {
+      "id":"e45ef3ab.3950e",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"msg.payload = msg.payload[0].Name\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":2540,
+      "y":900,
+      "wires":[
+         [
+            "f80f985a.3f70b8"
+         ]
+      ]
+   },
+   {
+      "id":"f80f985a.3f70b8",
+      "type":"ui_text",
+      "z":"62d78cbd.968054",
+      "group":"b883aca4.0b5ca8",
+      "order":5,
+      "width":5,
+      "height":1,
+      "name":"",
+      "label":"Name",
+      "format":"{{msg.payload}}",
+      "layout":"row-spread",
+      "x":2710,
+      "y":900,
+      "wires":[
+         
+      ]
+   },
+   {
+      "id":"f12d210c.123d08",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"msg.payload = msg.payload[0].Gender\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":2540,
+      "y":1020,
+      "wires":[
+         [
+            "ac723bac.a0544"
+         ]
+      ]
+   },
+   {
+      "id":"ac723bac.a0544",
+      "type":"ui_text",
+      "z":"62d78cbd.968054",
+      "group":"b883aca4.0b5ca8",
+      "order":7,
+      "width":5,
+      "height":1,
+      "name":"",
+      "label":"Gender",
+      "format":"{{msg.payload}}",
+      "layout":"row-spread",
+      "x":2720,
+      "y":1020,
+      "wires":[
+         
+      ]
+   },
+   {
+      "id":"3d3902b0.64af06",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"msg.payload = msg.payload[0].Patient_Report\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":2540,
+      "y":1080,
+      "wires":[
+         [
+            "9b9641ae.9bccb8"
+         ]
+      ]
+   },
+   {
+      "id":"40515bcc.afc94c",
+      "type":"ui_text",
+      "z":"62d78cbd.968054",
+      "group":"b883aca4.0b5ca8",
+      "order":10,
+      "width":25,
+      "height":15,
+      "name":"",
+      "label":"Patient_Report",
+      "format":"{{msg.payload.toString()}}",
+      "layout":"row-spread",
+      "x":3200,
+      "y":1080,
+      "wires":[
+         
+      ]
+   },
+   {
+      "id":"a4285fd9.77a228",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"msg.payload = msg.payload[0].Prescriptions\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":2540,
+      "y":1140,
+      "wires":[
+         [
+            "9b7628a9.4e17f8"
+         ]
+      ]
+   },
+   {
+      "id":"6ff0997.f2779e8",
+      "type":"ui_text",
+      "z":"62d78cbd.968054",
+      "group":"b883aca4.0b5ca8",
+      "order":11,
+      "width":25,
+      "height":18,
+      "name":"",
+      "label":"Prescriptions",
+      "format":"{{msg.payload}}",
+      "layout":"row-spread",
+      "x":3190,
+      "y":1140,
+      "wires":[
+         
+      ]
+   },
+   {
+      "id":"54fe26d5.2aaae8",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"msg.payload = msg.payload[0].Patient_History\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":2540,
+      "y":1180,
+      "wires":[
+         [
+            "e323191b.56cc08"
+         ]
+      ]
+   },
+   {
+      "id":"3780e844.2e7f",
+      "type":"ui_text",
+      "z":"62d78cbd.968054",
+      "group":"b883aca4.0b5ca8",
+      "order":12,
+      "width":25,
+      "height":13,
+      "name":"",
+      "label":"Patient_History",
+      "format":"{{msg.payload}}",
+      "layout":"row-spread",
+      "x":3200,
+      "y":1180,
+      "wires":[
+         
+      ]
+   },
+   {
+      "id":"2c66e3b0.8b9d14",
+      "type":"ui_ui_control",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "events":"all",
+      "x":940,
+      "y":180,
+      "wires":[
+         [
+            "9ef520.3e5122e"
+         ]
+      ]
+   },
+   {
+      "id":"57f00a62.b24e2c",
+      "type":"ui_button",
+      "z":"62d78cbd.968054",
+      "name":"Enter Patient Details",
+      "group":"6dbee47a.2dde2c",
+      "order":2,
+      "width":7,
+      "height":5,
+      "passthru":false,
+      "label":"Enter Patient Details",
+      "tooltip":"",
+      "color":"",
+      "bgcolor":"",
+      "icon":"",
+      "payload":"Enter Patient Details",
+      "payloadType":"str",
+      "topic":"topic",
+      "topicType":"msg",
+      "x":640,
+      "y":180,
+      "wires":[
+         [
+            "2c66e3b0.8b9d14"
+         ]
+      ]
+   },
+   {
+      "id":"2f4f312a.152d2e",
+      "type":"ui_button",
+      "z":"62d78cbd.968054",
+      "name":"View Patient Details",
+      "group":"6dbee47a.2dde2c",
+      "order":1,
+      "width":7,
+      "height":5,
+      "passthru":false,
+      "label":"View Patient Details",
+      "tooltip":"",
+      "color":"",
+      "bgcolor":"",
+      "icon":"",
+      "payload":"View Patient Details",
+      "payloadType":"str",
+      "topic":"topic",
+      "topicType":"msg",
+      "x":700,
+      "y":1040,
+      "wires":[
+         [
+            "bec4f667.ae144"
+         ]
+      ]
+   },
+   {
+      "id":"e281e976.4d89",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Enter Patient ID",
+      "label":"Enter Patient ID",
+      "tooltip":"",
+      "group":"4beaf4cf.92b1e4",
+      "order":1,
+      "width":0,
+      "height":0,
+      "passthru":false,
+      "mode":"text",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1580,
+      "y":1040,
+      "wires":[
+         [
+            "e58e7f16.aecd9"
+         ]
+      ]
+   },
+   {
+      "id":"bec4f667.ae144",
+      "type":"ui_ui_control",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "events":"all",
+      "x":1000,
+      "y":1040,
+      "wires":[
+         [
+            "1fac4a0b.dedffe"
+         ]
+      ]
+   },
+   {
+      "id":"bb597f7.b446c8",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Enter Public Key",
+      "label":"Enter Public Key",
+      "tooltip":"",
+      "group":"4beaf4cf.92b1e4",
+      "order":2,
+      "width":0,
+      "height":0,
+      "passthru":true,
+      "mode":"text",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1580,
+      "y":980,
+      "wires":[
+         [
+            "87ddec53.f02cc",
+            "577037b8.5fe3c8"
+         ]
+      ]
+   },
+   {
+      "id":"1fac4a0b.dedffe",
+      "type":"ui_button",
+      "z":"62d78cbd.968054",
+      "name":"View Details",
+      "group":"4beaf4cf.92b1e4",
+      "order":3,
+      "width":0,
+      "height":0,
+      "passthru":false,
+      "label":"View Details",
+      "tooltip":"",
+      "color":"",
+      "bgcolor":"",
+      "icon":"",
+      "payload":"Patient Details",
+      "payloadType":"str",
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1250,
+      "y":1040,
+      "wires":[
+         [
+            "c17a7e07.417ac",
+            "e281e976.4d89",
+            "bb597f7.b446c8"
+         ]
+      ]
+   },
+   {
+      "id":"8aa5f1e8.0a91b",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Patient ID",
+      "label":"Patient ID",
+      "tooltip":"",
+      "group":"2d83fea9.f34932",
+      "order":1,
+      "width":5,
+      "height":1,
+      "passthru":false,
+      "mode":"text",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1600,
+      "y":280,
+      "wires":[
+         [
+            "21353ae8.522266"
+         ]
+      ]
+   },
+   {
+      "id":"31624183.647f36",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Patient Name",
+      "label":"Patient Name",
+      "tooltip":"",
+      "group":"2d83fea9.f34932",
+      "order":2,
+      "width":5,
+      "height":1,
+      "passthru":false,
+      "mode":"text",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1630,
+      "y":340,
+      "wires":[
+         [
+            "1046ee60.d01dfa"
+         ]
+      ]
+   },
+   {
+      "id":"e016d237.b80fc8",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Patient Age",
+      "label":"Patient Age",
+      "tooltip":"",
+      "group":"2d83fea9.f34932",
+      "order":3,
+      "width":6,
+      "height":1,
+      "passthru":false,
+      "mode":"text",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1620,
+      "y":380,
+      "wires":[
+         [
+            "23225058.21ffd8"
+         ]
+      ]
+   },
+   {
+      "id":"ea718e5c.aab9a",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Patient Gender",
+      "label":"Patient Gender",
+      "tooltip":"",
+      "group":"2d83fea9.f34932",
+      "order":4,
+      "width":6,
+      "height":1,
+      "passthru":false,
+      "mode":"text",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1630,
+      "y":440,
+      "wires":[
+         [
+            "148c5146.ebc6bf"
+         ]
+      ]
+   },
+   {
+      "id":"16fc631a.344e9d",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Patient Report",
+      "label":"Patient Report",
+      "tooltip":"",
+      "group":"2d83fea9.f34932",
+      "order":8,
+      "width":30,
+      "height":12,
+      "passthru":false,
+      "mode":"text",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1630,
+      "y":500,
+      "wires":[
+         [
+            "674922c8.7d8a74"
+         ]
+      ]
+   },
+   {
+      "id":"cfe76873.77e38",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Patient Prescription",
+      "label":"Patient Prescription",
+      "tooltip":"",
+      "group":"2d83fea9.f34932",
+      "order":9,
+      "width":30,
+      "height":12,
+      "passthru":false,
+      "mode":"text",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1640,
+      "y":560,
+      "wires":[
+         [
+            "8d865c26.289c2"
+         ]
+      ]
+   },
+   {
+      "id":"836f3bba.b1dd58",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Patient History",
+      "label":"Patient History",
+      "tooltip":"",
+      "group":"2d83fea9.f34932",
+      "order":10,
+      "width":30,
+      "height":18,
+      "passthru":false,
+      "mode":"text",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1630,
+      "y":620,
+      "wires":[
+         [
+            "a36c6ad2.7eedb"
+         ]
+      ]
+   },
+   {
+      "id":"e5def33b.158b4",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Private Key",
+      "label":"Private Key",
+      "tooltip":"",
+      "group":"2d83fea9.f34932",
+      "order":5,
+      "width":8,
+      "height":1,
+      "passthru":false,
+      "mode":"text",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1620,
+      "y":660,
+      "wires":[
+         [
+            "d992797a.e69eb"
+         ]
+      ]
+   },
+   {
+      "id":"9ef520.3e5122e",
+      "type":"ui_button",
+      "z":"62d78cbd.968054",
+      "name":"Enter Details",
+      "group":"2d83fea9.f34932",
+      "order":11,
+      "width":0,
+      "height":0,
+      "passthru":false,
+      "label":"Enter Details",
+      "tooltip":"",
+      "color":"",
+      "bgcolor":"",
+      "icon":"",
+      "payload":"8",
+      "payloadType":"str",
+      "topic":"topic",
+      "topicType":"msg",
+      "x":1250,
+      "y":180,
+      "wires":[
+         [
+            "e5def33b.158b4",
+            "836f3bba.b1dd58",
+            "cfe76873.77e38",
+            "16fc631a.344e9d",
+            "ea718e5c.aab9a",
+            "e016d237.b80fc8",
+            "31624183.647f36",
+            "8aa5f1e8.0a91b",
+            "50b9cd65.11202c"
+         ]
+      ]
+   },
+   {
+      "id":"c17a7e07.417ac",
+      "type":"ui_ui_control",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "events":"all",
+      "x":1600,
+      "y":1100,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"21353ae8.522266",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"global.set(\"PID\",msg.payload);",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1880,
+      "y":280,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"1046ee60.d01dfa",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"global.set(\"PN\",msg.payload);",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1880,
+      "y":340,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"23225058.21ffd8",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"global.set(\"PA\",msg.payload);",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1880,
+      "y":380,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"148c5146.ebc6bf",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"global.set(\"PG\",msg.payload);",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1900,
+      "y":440,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"bf4a4d24.7509b",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"global.set(\"PR\",msg.payload);",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":2220,
+      "y":500,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"79bb3f1.6babd4",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"global.set(\"PP\",msg.payload);",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":2220,
+      "y":560,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"9633d4ee.5c7f98",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"global.set(\"PH\",msg.payload);",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":2220,
+      "y":620,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"d992797a.e69eb",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"global.set(\"PRK\",msg.payload);",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1840,
+      "y":660,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"50b9cd65.11202c",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"var pid=global.get(\"PID\");\nvar pn=global.get(\"PN\");\nvar pa=global.get(\"PA\");\nvar pg=global.get(\"PG\");\nvar pr=global.get(\"PR\");\nvar pp=global.get(\"PP\");\nvar ph=global.get(\"PH\");\nvar prk=global.get(\"PRK\");\n\n//msg.topic=\"insert into tankcontrol(timestamp,reservetanklevel,supplytankflow,supplytanklevel,outletflow,valve1,pump,valve2,override,soiltimestamp,soildata) values(\"+'\"'+dt+'\"'+\",\"+l1+\",\"+f1+\",\"+l2+\",\"+f2+\",\"+v1+\",\"+p+\",\"+v2+\",\"+ov+\",\"+'\"'+ds+'\"'+\",\"+s+\");\";\n//msg.payload=\"insert into tankcontrol(timestamp,reservetanklevel,supplytankflow,supplytanklevel,outletflow,valve1,pump,valve2,override,soiltimestamp,soildata) values(\"+'\"'+dt+'\"'+\",\"+l1+\",\"+f1+\",\"+l2+\",\"+f2+\",\"+v1+\",\"+p+\",\"+v2+\",\"+ov+\",\"+'\"'+ds+'\"'+\",\"+s+\");\";\n//msg.topic=\"INSERT INTO `Hospital_Management`.`Patient_Details` (`Patient_ID`, `Name`, `Age`, `Gender`, `Patient_Report`, `Prescriptions`, `Patient_History`) VALUES (\"+'\"'+pid+'\"'+\",\"+pn+\",\"+pa+\",\"+pg+\",\"+pr+\",\"+pp+\",\"+ph+\");\";\nmsg.topic = \"INSERT INTO `Hospital_Management`.`Patient_Details` (`Patient_ID`, `Name`, `Age`, `Gender`, `Patient_Report`, `Prescriptions`, `Patient_History`) VALUES ('\"+pid+\"', '\"+pn+\"', '\"+pa+\"', '\"+pg+\"', '\"+pr+\"', '\"+pp+\"', '\"+ph+\"');\";\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1990,
+      "y":180,
+      "wires":[
+         [
+            "c588f39.63c539"
+         ]
+      ]
+   },
+   {
+      "id":"114093ae.e1b0fc",
+      "type":"delay",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "pauseType":"delay",
+      "timeout":"3",
+      "timeoutUnits":"seconds",
+      "rate":"1",
+      "nbRateUnits":"1",
+      "rateUnits":"second",
+      "randomFirst":"1",
+      "randomLast":"5",
+      "randomUnits":"seconds",
+      "drop":false,
+      "x":1770,
+      "y":180,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"c588f39.63c539",
+      "type":"mysql",
+      "z":"62d78cbd.968054",
+      "mydb":"a3798f0e.a203c",
+      "name":"",
+      "x":2500,
+      "y":180,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"674922c8.7d8a74",
+      "type":"delay",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "pauseType":"delay",
+      "timeout":"2",
+      "timeoutUnits":"seconds",
+      "rate":"1",
+      "nbRateUnits":"1",
+      "rateUnits":"second",
+      "randomFirst":"1",
+      "randomLast":"5",
+      "randomUnits":"seconds",
+      "drop":false,
+      "x":1840,
+      "y":500,
+      "wires":[
+         [
+            "bbb344a9.1703a"
+         ]
+      ]
+   },
+   {
+      "id":"8d865c26.289c2",
+      "type":"delay",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "pauseType":"delay",
+      "timeout":"2",
+      "timeoutUnits":"seconds",
+      "rate":"1",
+      "nbRateUnits":"1",
+      "rateUnits":"second",
+      "randomFirst":"1",
+      "randomLast":"5",
+      "randomUnits":"seconds",
+      "drop":false,
+      "x":1840,
+      "y":560,
+      "wires":[
+         [
+            "a113380f.cc88f"
+         ]
+      ]
+   },
+   {
+      "id":"a36c6ad2.7eedb",
+      "type":"delay",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "pauseType":"delay",
+      "timeout":"2",
+      "timeoutUnits":"seconds",
+      "rate":"1",
+      "nbRateUnits":"1",
+      "rateUnits":"second",
+      "randomFirst":"1",
+      "randomLast":"5",
+      "randomUnits":"seconds",
+      "drop":false,
+      "x":1840,
+      "y":620,
+      "wires":[
+         [
+            "9b0483c4.8e82d"
+         ]
+      ]
+   },
+   {
+      "id":"bbb344a9.1703a",
+      "type":"encryptor",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "cryptoPassword":"p3s6v9y$B&E)H@McQeThWmZq4t7w!z%C*F-JaNdRgUjXn2r5u8x/A?D(G+KbPeShVmYp3s6v9y$B&E)H@McQfTjWnZr4t7w!z%C*F-JaNdRgUkXp2s5v8x/A?D(G+KbP",
+      "x":2040,
+      "y":500,
+      "wires":[
+         [
+            "bf4a4d24.7509b"
+         ]
+      ]
+   },
+   {
+      "id":"a113380f.cc88f",
+      "type":"encryptor",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "cryptoPassword":"p3s6v9y$B&E)H@McQeThWmZq4t7w!z%C*F-JaNdRgUjXn2r5u8x/A?D(G+KbPeShVmYp3s6v9y$B&E)H@McQfTjWnZr4t7w!z%C*F-JaNdRgUkXp2s5v8x/A?D(G+KbP",
+      "x":2040,
+      "y":560,
+      "wires":[
+         [
+            "79bb3f1.6babd4"
+         ]
+      ]
+   },
+   {
+      "id":"9b0483c4.8e82d",
+      "type":"encryptor",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "cryptoPassword":"p3s6v9y$B&E)H@McQeThWmZq4t7w!z%C*F-JaNdRgUjXn2r5u8x/A?D(G+KbPeShVmYp3s6v9y$B&E)H@McQfTjWnZr4t7w!z%C*F-JaNdRgUkXp2s5v8x/A?D(G+KbP",
+      "x":2040,
+      "y":620,
+      "wires":[
+         [
+            "9633d4ee.5c7f98"
+         ]
+      ]
+   },
+   {
+      "id":"87ddec53.f02cc",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"global.set(\"PK\",msg.payload);",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1800,
+      "y":980,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"5fc649a4.77df18",
+      "type":"decryptor",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "cryptoPassword":"p3s6v9y$B&E)H@McQeThWmZq4t7w!z%C*F-JaNdRgUjXn2r5u8x/A?D(G+KbPeShVmYp3s6v9y$B&E)H@McQfTjWnZr4t7w!z%C*F-JaNdRgUkXp2s5v8x/A?D(G+KbP",
+      "x":2980,
+      "y":1080,
+      "wires":[
+         [
+            "40515bcc.afc94c"
+         ]
+      ]
+   },
+   {
+      "id":"a1b36747.5a46",
+      "type":"decryptor",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "cryptoPassword":"p3s6v9y$B&E)H@McQeThWmZq4t7w!z%C*F-JaNdRgUjXn2r5u8x/A?D(G+KbPeShVmYp3s6v9y$B&E)H@McQfTjWnZr4t7w!z%C*F-JaNdRgUkXp2s5v8x/A?D(G+KbP",
+      "x":2980,
+      "y":1140,
+      "wires":[
+         [
+            "6ff0997.f2779e8"
+         ]
+      ]
+   },
+   {
+      "id":"223e943.43f686c",
+      "type":"decryptor",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "cryptoPassword":"p3s6v9y$B&E)H@McQeThWmZq4t7w!z%C*F-JaNdRgUjXn2r5u8x/A?D(G+KbPeShVmYp3s6v9y$B&E)H@McQfTjWnZr4t7w!z%C*F-JaNdRgUkXp2s5v8x/A?D(G+KbP",
+      "x":2980,
+      "y":1180,
+      "wires":[
+         [
+            "3780e844.2e7f"
+         ]
+      ]
+   },
+   {
+      "id":"b6ffba3d.2b4f48",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Login_ID",
+      "label":"Login ID",
+      "tooltip":"",
+      "group":"bdf902e4.0acb98",
+      "order":3,
+      "width":0,
+      "height":0,
+      "passthru":false,
+      "mode":"text",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":820,
+      "y":1240,
+      "wires":[
+         [
+            "ec959e2.c81086"
+         ]
+      ]
+   },
+   {
+      "id":"b586e560.5e0f98",
+      "type":"ui_text_input",
+      "z":"62d78cbd.968054",
+      "name":"Pasword",
+      "label":"Pasword",
+      "tooltip":"",
+      "group":"bdf902e4.0acb98",
+      "order":4,
+      "width":0,
+      "height":0,
+      "passthru":false,
+      "mode":"password",
+      "delay":300,
+      "topic":"topic",
+      "topicType":"msg",
+      "x":820,
+      "y":1300,
+      "wires":[
+         [
+            "ce2cc32c.d97e38"
+         ]
+      ]
+   },
+   {
+      "id":"1e85a82.68ba1d8",
+      "type":"ui_button",
+      "z":"62d78cbd.968054",
+      "name":"Login",
+      "group":"bdf902e4.0acb98",
+      "order":6,
+      "width":0,
+      "height":0,
+      "passthru":false,
+      "label":"Login",
+      "tooltip":"",
+      "color":"",
+      "bgcolor":"",
+      "icon":"",
+      "payload":" ",
+      "payloadType":"str",
+      "topic":"topic",
+      "topicType":"msg",
+      "x":630,
+      "y":1360,
+      "wires":[
+         [
+            "b6ffba3d.2b4f48",
+            "b586e560.5e0f98",
+            "cbfe1a31.1af07"
+         ]
+      ]
+   },
+   {
+      "id":"9566e39b.3f7fa",
+      "type":"ui_ui_control",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "events":"all",
+      "x":1500,
+      "y":1340,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"b52379bd.f36e88",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"var lid=global.get(\"LID\");\nvar pwd=global.get(\"PWD\");\nif(lid === \"David_0909\" && pwd == \"qwerty1234\")\n{\n    msg.payload = 1;\n}\nelse\n{\n    msg.payload = 0;\n}\nreturn msg;\n",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1020,
+      "y":1360,
+      "wires":[
+         [
+            "60333b01.43cb54"
+         ]
+      ]
+   },
+   {
+      "id":"ce2cc32c.d97e38",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"global.set(\"PWD\",msg.payload);",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1040,
+      "y":1300,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"ec959e2.c81086",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"global.set(\"LID\",msg.payload);",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1040,
+      "y":1240,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"cbfe1a31.1af07",
+      "type":"delay",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "pauseType":"delay",
+      "timeout":"1",
+      "timeoutUnits":"seconds",
+      "rate":"1",
+      "nbRateUnits":"1",
+      "rateUnits":"second",
+      "randomFirst":"1",
+      "randomLast":"5",
+      "randomUnits":"seconds",
+      "drop":false,
+      "x":820,
+      "y":1360,
+      "wires":[
+         [
+            "b52379bd.f36e88"
+         ]
+      ]
+   },
+   {
+      "id":"60333b01.43cb54",
+      "type":"switch",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "property":"payload",
+      "propertyType":"msg",
+      "rules":[
+         {
+            "t":"eq",
+            "v":"1",
+            "vt":"num"
+         },
+         {
+            "t":"eq",
+            "v":"0",
+            "vt":"num"
+         }
+      ],
+      "checkall":"true",
+      "repair":false,
+      "outputs":2,
+      "x":1190,
+      "y":1360,
+      "wires":[
+         [
+            "bd524330.c14aa"
+         ],
+         [
+            "9b2c5492.8c2bf8"
+         ]
+      ]
+   },
+   {
+      "id":"e80c0b07.8ba1a8",
+      "type":"ui_text",
+      "z":"62d78cbd.968054",
+      "group":"bdf902e4.0acb98",
+      "order":5,
+      "width":0,
+      "height":0,
+      "name":"Login Status",
+      "label":"Login Status",
+      "format":"{{msg.payload}}",
+      "layout":"row-spread",
+      "x":1510,
+      "y":1400,
+      "wires":[
+         
+      ]
+   },
+   {
+      "id":"bd524330.c14aa",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"msg.payload = \"Dashboard\"\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1340,
+      "y":1340,
+      "wires":[
+         [
+            "9566e39b.3f7fa"
+         ]
+      ]
+   },
+   {
+      "id":"9b2c5492.8c2bf8",
+      "type":"function",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "func":"msg.payload = \"Failed\"\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "initialize":"",
+      "finalize":"",
+      "x":1340,
+      "y":1380,
+      "wires":[
+         [
+            "e80c0b07.8ba1a8"
+         ]
+      ]
+   },
+   {
+      "id":"a703e458.bd4bf8",
+      "type":"ui_button",
+      "z":"62d78cbd.968054",
+      "name":"Logout",
+      "group":"2136ff26.0213c",
+      "order":1,
+      "width":0,
+      "height":0,
+      "passthru":false,
+      "label":"Logout",
+      "tooltip":"",
+      "color":"",
+      "bgcolor":"",
+      "icon":"",
+      "payload":"Hospital Management",
+      "payloadType":"str",
+      "topic":"topic",
+      "topicType":"msg",
+      "x":780,
+      "y":1520,
+      "wires":[
+         [
+            "79e07088.3309e"
+         ]
+      ]
+   },
+   {
+      "id":"45ed9544.b015d4",
+      "type":"ui_button",
+      "z":"62d78cbd.968054",
+      "name":"Logout",
+      "group":"37cf68a7.bbaae8",
+      "order":1,
+      "width":6,
+      "height":1,
+      "passthru":false,
+      "label":"Logout",
+      "tooltip":"",
+      "color":"",
+      "bgcolor":"",
+      "icon":"",
+      "payload":"Hospital Management",
+      "payloadType":"str",
+      "topic":"topic",
+      "topicType":"msg",
+      "x":790,
+      "y":1580,
+      "wires":[
+         [
+            "79e07088.3309e"
+         ]
+      ]
+   },
+   {
+      "id":"3f8291d4.91d8ee",
+      "type":"ui_button",
+      "z":"62d78cbd.968054",
+      "name":"Logout",
+      "group":"f305535a.bff0c8",
+      "order":2,
+      "width":4,
+      "height":1,
+      "passthru":false,
+      "label":"Logout",
+      "tooltip":"",
+      "color":"",
+      "bgcolor":"",
+      "icon":"",
+      "payload":"Hospital Management",
+      "payloadType":"str",
+      "topic":"topic",
+      "topicType":"msg",
+      "x":790,
+      "y":1640,
+      "wires":[
+         [
+            "79e07088.3309e"
+         ]
+      ]
+   },
+   {
+      "id":"d5d8252a.f45d7",
+      "type":"ui_button",
+      "z":"62d78cbd.968054",
+      "name":"Logout",
+      "group":"823b57d4.367c1",
+      "order":1,
+      "width":6,
+      "height":1,
+      "passthru":false,
+      "label":"Logout",
+      "tooltip":"",
+      "color":"",
+      "bgcolor":"",
+      "icon":"",
+      "payload":"Hospital Management",
+      "payloadType":"str",
+      "topic":"topic",
+      "topicType":"msg",
+      "x":790,
+      "y":1680,
+      "wires":[
+         [
+            "79e07088.3309e"
+         ]
+      ]
+   },
+   {
+      "id":"79e07088.3309e",
+      "type":"ui_ui_control",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "events":"all",
+      "x":1020,
+      "y":1580,
+      "wires":[
+         [
+            
+         ]
+      ]
+   },
+   {
+      "id":"9b9641ae.9bccb8",
+      "type":"delay",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "pauseType":"delay",
+      "timeout":"2",
+      "timeoutUnits":"seconds",
+      "rate":"1",
+      "nbRateUnits":"1",
+      "rateUnits":"second",
+      "randomFirst":"1",
+      "randomLast":"5",
+      "randomUnits":"seconds",
+      "drop":false,
+      "x":2740,
+      "y":1080,
+      "wires":[
+         [
+            "5fc649a4.77df18"
+         ]
+      ]
+   },
+   {
+      "id":"9b7628a9.4e17f8",
+      "type":"delay",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "pauseType":"delay",
+      "timeout":"2",
+      "timeoutUnits":"seconds",
+      "rate":"1",
+      "nbRateUnits":"1",
+      "rateUnits":"second",
+      "randomFirst":"1",
+      "randomLast":"5",
+      "randomUnits":"seconds",
+      "drop":false,
+      "x":2740,
+      "y":1140,
+      "wires":[
+         [
+            "a1b36747.5a46"
+         ]
+      ]
+   },
+   {
+      "id":"e323191b.56cc08",
+      "type":"delay",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "pauseType":"delay",
+      "timeout":"2",
+      "timeoutUnits":"seconds",
+      "rate":"1",
+      "nbRateUnits":"1",
+      "rateUnits":"second",
+      "randomFirst":"1",
+      "randomLast":"5",
+      "randomUnits":"seconds",
+      "drop":false,
+      "x":2740,
+      "y":1180,
+      "wires":[
+         [
+            "223e943.43f686c"
+         ]
+      ]
+   },
+   {
+      "id":"577037b8.5fe3c8",
+      "type":"debug",
+      "z":"62d78cbd.968054",
+      "name":"",
+      "active":true,
+      "tosidebar":true,
+      "console":false,
+      "tostatus":false,
+      "complete":"false",
+      "statusVal":"",
+      "statusType":"auto",
+      "x":1820,
+      "y":940,
+      "wires":[
+         
+      ]
+   },
+   {
+      "id":"a3798f0e.a203c",
+      "type":"MySQLdatabase",
+      "name":"",
+      "host":"127.0.0.1",
+      "port":"3306",
+      "db":"Hospital_Management",
+      "tz":"",
+      "charset":"UTF8"
+   },
+   {
+      "id":"b883aca4.0b5ca8",
+      "type":"ui_group",
+      "name":"Patient Details",
+      "tab":"e66856c3.38d5b",
+      "order":1,
+      "disp":true,
+      "width":"25",
+      "collapse":false
+   },
+   {
+      "id":"6dbee47a.2dde2c",
+      "type":"ui_group",
+      "name":"Dashboard",
+      "tab":"c1395d83.4942c8",
+      "order":1,
+      "disp":true,
+      "width":14,
+      "collapse":false
+   },
+   {
+      "id":"4beaf4cf.92b1e4",
+      "type":"ui_group",
+      "name":"View Patient Details",
+      "tab":"ed50e3d5.6d579",
+      "order":1,
+      "disp":true,
+      "width":"6",
+      "collapse":false
+   },
+   {
+      "id":"2d83fea9.f34932",
+      "type":"ui_group",
+      "name":"Enter Patient Details",
+      "tab":"e3c7337b.5b2538",
+      "order":1,
+      "disp":true,
+      "width":30,
+      "collapse":false
+   },
+   {
+      "id":"bdf902e4.0acb98",
+      "type":"ui_group",
+      "name":"Login Page",
+      "tab":"11f4a990.0abade",
+      "order":1,
+      "disp":true,
+      "width":"12",
+      "collapse":false
+   },
+   {
+      "id":"2136ff26.0213c",
+      "type":"ui_group",
+      "name":"Logout",
+      "tab":"ed50e3d5.6d579",
+      "order":2,
+      "disp":true,
+      "width":10,
+      "collapse":false
+   },
+   {
+      "id":"37cf68a7.bbaae8",
+      "type":"ui_group",
+      "name":"Logout",
+      "tab":"e3c7337b.5b2538",
+      "order":2,
+      "disp":true,
+      "width":15,
+      "collapse":false
+   },
+   {
+      "id":"f305535a.bff0c8",
+      "type":"ui_group",
+      "name":"Logout",
+      "tab":"c1395d83.4942c8",
+      "order":2,
+      "disp":true,
+      "width":"6",
+      "collapse":false
+   },
+   {
+      "id":"823b57d4.367c1",
+      "type":"ui_group",
+      "name":"Logout",
+      "tab":"e66856c3.38d5b",
+      "order":2,
+      "disp":true,
+      "width":"6",
+      "collapse":false
+   },
+   {
+      "id":"e66856c3.38d5b",
+      "type":"ui_tab",
+      "name":"Patient Details",
+      "icon":"dashboard",
+      "order":8,
+      "disabled":false,
+      "hidden":false
+   },
+   {
+      "id":"c1395d83.4942c8",
+      "type":"ui_tab",
+      "name":"Dashboard",
+      "icon":"dashboard",
+      "order":9,
+      "disabled":false,
+      "hidden":false
+   },
+   {
+      "id":"ed50e3d5.6d579",
+      "type":"ui_tab",
+      "name":"View Patient Details",
+      "icon":"dashboard",
+      "order":6,
+      "disabled":false,
+      "hidden":false
+   },
+   {
+      "id":"e3c7337b.5b2538",
+      "type":"ui_tab",
+      "name":"Enter Patient Details",
+      "icon":"dashboard",
+      "order":7,
+      "disabled":false,
+      "hidden":false
+   },
+   {
+      "id":"11f4a990.0abade",
+      "type":"ui_tab",
+      "name":"Hospital Management",
+      "icon":"dashboard",
+      "order":4,
+      "disabled":false,
+      "hidden":false
+   }
 ]
